@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ANCHOR,
@@ -69,9 +69,7 @@ export function SelectScreen() {
         className="stage-photo"
         src={trader.photo}
         alt=""
-        style={{
-          transform: `scaleX(${spins % 2 ? -1 : 1}) rotateY(${yaw}deg) scale(1.05)`,
-        }}
+        style={{ "--flip": spins % 2 ? "-1" : "1", "--yaw": `${yaw}deg` } as CSSProperties}
       />
       <div className="stage-shade" />
       <div className="hud">
@@ -248,8 +246,7 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
           </Link>
         </div>
         <p className="fine">
-          Name MrStock, ticker ${TICKER}, anchor {ANCHOR}. No 5% holder tax. Long routes a slice of
-          new-pair fees to a burn and to the $AI reserve. Parody riders. Not those people. Not
+          Name MrStock, ticker ${TICKER}, anchor {ANCHOR}. Parody riders. Not those people. Not
           those firms. Not a fund. Not advice.
         </p>
         <button type="button" className="text-back" onClick={onClose}>

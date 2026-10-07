@@ -17,9 +17,9 @@ export function RulesScreen() {
           <h1>One pair. SPY. Then the ticker prints.</h1>
           <p>
             MrStock is a skate-shop character select in front of a stock-paired meme. The coin
-            launches on Long, on {CHAIN_NAME}, against the {ANCHOR} stock token. There is no
-            LetsCash tax and no holder dividend. The address on the accept card is SPY. ${TICKER}{" "}
-            does not exist until someone signs the launch.
+            launches on Long, on {CHAIN_NAME}, against the {ANCHOR} stock token. There is no holder
+            dividend. The address on the accept card is SPY. ${TICKER} does not exist until someone
+            signs the launch.
           </p>
         </section>
 
@@ -43,7 +43,7 @@ export function RulesScreen() {
           <p>
             SPY on this chain is a Robinhood stock token: economic exposure, not a share, not a
             vote, not the ETF in your brokerage. Buying ${TICKER} sells that token into the pool.
-            Selling ${TICKER} buys it back out. Two things move the dollar mark: trades that change
+            Selling ${TICKER} pulls it back out. Two things move the dollar mark: trades that change
             the ratio, and the dollar price of SPY itself.
           </p>
           <p>
@@ -52,26 +52,7 @@ export function RulesScreen() {
         </article>
 
         <article className="slate rule">
-          <h2>3 · What Long routes</h2>
-          <ul className="rule-list">
-            <li>
-              On new stock-paired pools, Long sends <b>5%</b> of stock-token fees to the $AI
-              reserve.
-            </li>
-            <li>
-              Another <b>5%</b> buys back and burns the meme paired to that stock. Anyone can
-              trigger it. No volume, no burn.
-            </li>
-            <li>Liquidity-provider fees keep compounding in the pool. Creator fees stay as Long set them.</li>
-          </ul>
-          <p>
-            That is their rule, not a 5% tax this desk chose. It is not a payout to holders, and it
-            is not the old LetsCash split. We do not edit it.
-          </p>
-        </article>
-
-        <article className="slate rule">
-          <h2>4 · The floor</h2>
+          <h2>3 · The floor</h2>
           <p>
             Ten lines on the desk — SPYLINE, NASPOP, DOWOLLIE, VIXKICK, BULLRUN, BEARPUT, SHRED,
             WOLFR, TONY, BLOCK — are the riders’ parody tape. Practice prices. Not a basket the
@@ -80,7 +61,7 @@ export function RulesScreen() {
         </article>
 
         <article className="slate rule">
-          <h2>5 · What this is not</h2>
+          <h2>4 · What this is not</h2>
           <ul className="rule-list">
             <li>Not Tony Hawk, not those investors, not those banks. Parody names, original riders.</li>
             <li>Not a fund, not an ETF, not SPY itself. One meme, one stock-token pair.</li>

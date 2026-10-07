@@ -28,7 +28,7 @@ On Long, the quote asset is the SPY stock token. A buy sells that token into the
 
 The address published on mrstock.xyz is that SPY stock token. It is not the coin. The coin address does not exist until someone signs the launch. This article cannot sign it.
 
-There is no 5% holder tax and no dividend. Long routes a slice of fees on new stock pairs toward a buyback-and-burn and toward the $AI reserve. That is their rule. No volume, no burn. Holding does not pay you ten seats. The ten lines on the desk are a parody tape.
+Holding does not pay you ten seats. The ten lines on the desk are a parody tape.
 
 ## What this is not
 

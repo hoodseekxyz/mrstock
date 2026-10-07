@@ -3,7 +3,6 @@ import {
   ANCHOR,
   CHAIN_ID,
   LAUNCH_URL,
-  LONG_ROUTES,
   PAIR,
   PAIR_URL,
   SEATS,
@@ -52,8 +51,8 @@ export function DeskScreen() {
           <p>
             ${TICKER} launches on Long, paired to the SPY stock token, not to ETH. A buy sells SPY
             into the pool. If SPY’s dollar price rises and the pool ratio does not, the coin’s
-            dollar mark inside that pair rises with it. No 5% holder tax. The coin address does not
-            exist until that launch is signed.
+            dollar mark inside that pair rises with it. The coin address does not exist until that
+            launch is signed.
           </p>
         </section>
 
@@ -74,20 +73,6 @@ export function DeskScreen() {
             <p>Same coins of SPY, higher stock price, higher dollar mark. Ratio still moves on trades.</p>
           </article>
         </section>
-
-        <section className="split-row">
-          {LONG_ROUTES.map((part) => (
-            <article key={part.key} className={part.key === "burn" ? "slate split hot" : "slate split"}>
-              <strong>{part.pct}</strong>
-              <h2>{part.label}</h2>
-              <p>{part.note}</p>
-            </article>
-          ))}
-        </section>
-        <p className="fine desk-note">
-          That split is Long’s rule on new stock pairs. This desk does not set it and cannot turn
-          it into a dividend. No volume, no burn.
-        </p>
 
         <section className="slate board">
           <header className="board-head">
