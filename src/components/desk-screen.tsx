@@ -1,40 +1,29 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import {
-  ELIGIBLE_ASSUMPTION,
+  ANCHOR,
+  CHAIN_ID,
   LAUNCH_URL,
-  MIN_HOLD,
+  LONG_ROUTES,
   PAIR,
   PAIR_URL,
   SEATS,
-  SPLIT,
   SUPPLY,
-  formatClock,
+  TICKER,
   formatNum,
   formatUsd,
   practicePrice,
-  secondsToEpoch,
 } from "@/data/game";
 import { BrandMark, ModeNav } from "@/components/chrome";
 
 export function DeskScreen() {
-  const [now, setNow] = useState(() => Date.now());
+  const [now] = useState(() => Date.now());
   const [hold, setHold] = useState(1_000_000);
-  const [pot, setPot] = useState(4000);
-  const [price, setPrice] = useState(0.00008);
+  const [spy, setSpy] = useState(580);
+  const [ratio, setRatio] = useState(0.000002);
 
-  useEffect(() => {
-    const id = window.setInterval(() => setNow(Date.now()), 1000);
-    return () => window.clearInterval(id);
-  }, []);
-
-  const remain = secondsToEpoch(new Date(now));
-  const eligiblePool = SUPPLY * ELIGIBLE_ASSUMPTION;
-  const inSet = hold >= MIN_HOLD;
-  const share = inSet ? hold / eligiblePool : 0;
-  const payout = share * pot;
-  const perSeat = payout / 10;
-  const position = hold * price;
-  const epochYield = position > 0 ? (payout / position) * 100 : 0;
+  const mark = hold * ratio * spy;
+  const markTape = hold * ratio * spy * 1.1;
+  const markTrade = hold * ratio * 2 * spy;
 
   const quotes = useMemo(
     () =>
@@ -58,84 +47,53 @@ export function DeskScreen() {
         </header>
 
         <section className="metal hero">
-          <p className="kicker">MrStock · Hold 1. Own the desk.</p>
-          <h1>Every trade pays the floor.</h1>
+          <p className="kicker">MrStock · Anchored to {ANCHOR}</p>
+          <h1>The coin trades the tape.</h1>
           <p>
-            $MRSTOCK is the stock-desk cousin of a holder index. A trade pays 5% once, on LetsCash,
-            and that split cannot be edited after launch. Four points buy ten equal seats. Those
-            seats are pushed to holders when the epoch closes. Eighty cents of every tax dollar is
-            holder money.
+            ${TICKER} launches on Long, paired to the SPY stock token, not to ETH. A buy sells SPY
+            into the pool. If SPY’s dollar price rises and the pool ratio does not, the coin’s
+            dollar mark inside that pair rises with it. No 5% holder tax. The coin address does not
+            exist until that launch is signed.
           </p>
         </section>
 
+        <section className="split-row three">
+          <article className="slate split hot">
+            <strong>SPY</strong>
+            <h2>The quote</h2>
+            <p>Robinhood stock token. The address on the card. Not ${TICKER}.</p>
+          </article>
+          <article className="slate split">
+            <strong>Lock</strong>
+            <h2>Buys stock in</h2>
+            <p>Buying the meme deposits SPY into the pool. Selling pulls it back out.</p>
+          </article>
+          <article className="slate split">
+            <strong>+SPY</strong>
+            <h2>Follows the tape</h2>
+            <p>Same coins of SPY, higher stock price, higher dollar mark. Ratio still moves on trades.</p>
+          </article>
+        </section>
+
         <section className="split-row">
-          {SPLIT.map((part) => (
-            <article key={part.key} className={part.key === "holders" ? "slate split hot" : "slate split"}>
-              <strong>{part.pct.toFixed(2)}%</strong>
+          {LONG_ROUTES.map((part) => (
+            <article key={part.key} className={part.key === "burn" ? "slate split hot" : "slate split"}>
+              <strong>{part.pct}</strong>
               <h2>{part.label}</h2>
               <p>{part.note}</p>
             </article>
           ))}
-          <article className="slate split">
-            <strong>8h</strong>
-            <h2>Epoch</h2>
-            <p>00:00, 08:00, 16:00 Europe/Rome. Closes only if the pot covers the crank.</p>
-          </article>
         </section>
-
-        <section className="epoch-grid">
-          <article className="slate epoch">
-            <p className="kicker">Next crank check</p>
-            <p className="clock">{formatClock(remain)}</p>
-            <p>Pre-launch. The pot is empty until $MRSTOCK prints. No volume, no dividend.</p>
-            <dl className="facts">
-              <div>
-                <dt>Chain</dt>
-                <dd>Robinhood · 4663</dd>
-              </div>
-              <div>
-                <dt>Supply at launch</dt>
-                <dd>{formatNum(SUPPLY)}</dd>
-              </div>
-              <div>
-                <dt>In the set</dt>
-                <dd>{formatNum(MIN_HOLD)} · 0.01%</dd>
-              </div>
-              <div>
-                <dt>Seat weight</dt>
-                <dd>10.00% each</dd>
-              </div>
-            </dl>
-          </article>
-          <article className="slate epoch">
-            <p className="kicker">Worked trade · $1,000</p>
-            <ul className="worked">
-              <li>
-                <span>Tax, 5%</span>
-                <b>$50.00</b>
-              </li>
-              <li>
-                <span>Holders, 4%</span>
-                <b>$40.00</b>
-              </li>
-              <li>
-                <span>Desk, 0.7%</span>
-                <b>$7.00</b>
-              </li>
-              <li>
-                <span>LetsCash, 0.3%</span>
-                <b>$3.00</b>
-              </li>
-            </ul>
-            <p className="fine">Round trip is about 10% before the price even moves. That is the cost of the tape.</p>
-          </article>
-        </section>
+        <p className="fine desk-note">
+          That split is Long’s rule on new stock pairs. This desk does not set it and cannot turn
+          it into a dividend. No volume, no burn.
+        </p>
 
         <section className="slate board">
           <header className="board-head">
             <div>
-              <h2>The ten</h2>
-              <p>Published desk. Equal dollars. Not a liquidity rank, and not a live quote.</p>
+              <h2>The floor</h2>
+              <p>Ten parody lines. Rider coverage. Not a payout, and not a live quote.</p>
             </div>
             <span className="pill">Practice tape</span>
           </header>
@@ -161,7 +119,7 @@ export function DeskScreen() {
                   {seat.change >= 0 ? "+" : ""}
                   {seat.change.toFixed(2)}%
                 </span>
-                <span className="mono">10.00%</span>
+                <span className="mono">—</span>
                 <span className="cover">
                   <b>{seat.rider}</b>
                   <small>{seat.blurb}</small>
@@ -173,8 +131,11 @@ export function DeskScreen() {
 
         <section className="metal calc">
           <header>
-            <h2>What an example epoch would pay a holding your size</h2>
-            <p>Trailing math on numbers you type. Not a forecast. Assumes 70% of supply is eligible.</p>
+            <h2>What a SPY move does to a holding you type</h2>
+            <p>
+              Practice numbers. Two knobs: the stock’s dollar price, and how much SPY one coin is
+              worth inside the pair. Not a forecast. Not the live pool.
+            </p>
           </header>
           <div className="calc-grid">
             <label>
@@ -187,63 +148,60 @@ export function DeskScreen() {
                 value={hold}
                 onChange={(e) => setHold(Number(e.target.value))}
               />
-              <strong>{formatNum(hold)} MRSTOCK</strong>
+              <strong>{formatNum(hold)} {TICKER}</strong>
             </label>
             <label>
-              Example 4% pot
+              Practice SPY price
               <input
                 type="range"
-                min={100}
-                max={50000}
-                step={100}
-                value={pot}
-                onChange={(e) => setPot(Number(e.target.value))}
+                min={400}
+                max={800}
+                step={1}
+                value={spy}
+                onChange={(e) => setSpy(Number(e.target.value))}
               />
-              <strong>{formatUsd(pot)}</strong>
+              <strong>{formatUsd(spy)}</strong>
             </label>
             <label>
-              Example coin price
+              SPY inside one coin
               <input
                 type="range"
-                min={0.00001}
-                max={0.001}
-                step={0.00001}
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
+                min={1}
+                max={100}
+                step={1}
+                value={Math.round(ratio * 1_000_000)}
+                onChange={(e) => setRatio(Number(e.target.value) / 1_000_000)}
               />
-              <strong>${price.toFixed(5)}</strong>
+              <strong>{ratio.toFixed(6)} SPY</strong>
             </label>
           </div>
-          {!inSet ? (
-            <p className="warn">Under 100,000. This wallet would trade, and miss the epoch.</p>
-          ) : null}
           <dl className="calc-out">
             <div>
-              <dt>Example position</dt>
-              <dd>{formatUsd(position)}</dd>
+              <dt>Dollar mark now</dt>
+              <dd>{formatUsd(mark)}</dd>
             </div>
             <div>
-              <dt>Paid that epoch</dt>
-              <dd>{formatUsd(payout)}</dd>
+              <dt>If SPY is +10%</dt>
+              <dd>{formatUsd(markTape)}</dd>
             </div>
             <div>
-              <dt>Each seat</dt>
-              <dd>{formatUsd(perSeat)}</dd>
+              <dt>If the ratio doubles</dt>
+              <dd>{formatUsd(markTrade)}</dd>
             </div>
             <div>
-              <dt>Yield, that epoch</dt>
-              <dd>{epochYield.toFixed(2)}%</dd>
+              <dt>Supply at launch</dt>
+              <dd>{formatNum(SUPPLY)}</dd>
             </div>
             <div>
-              <dt>Share of eligible</dt>
-              <dd>{(share * 100).toFixed(3)}%</dd>
+              <dt>Chain</dt>
+              <dd>Robinhood · {CHAIN_ID}</dd>
             </div>
           </dl>
         </section>
 
         <section className="slate pair-strip">
           <div>
-            <p className="kicker">SPY pair · not the token</p>
+            <p className="kicker">SPY stock token · not the coin</p>
             <p className="mono pair-addr">{PAIR}</p>
           </div>
           <div className="pair-links">
@@ -251,15 +209,15 @@ export function DeskScreen() {
               Blockscout
             </a>
             <a href={LAUNCH_URL} target="_blank" rel="noreferrer">
-              LetsCash launch
+              Deploy on Long
             </a>
           </div>
         </section>
 
         <p className="footer-note">
-          Parody desk. These riders are not those people and not those firms. $MRSTOCK is a meme
-          coin, not equity, not an ETF, not a managed fund. Seats can go to zero. Nothing here is
-          advice.
+          Parody desk. These riders are not those people and not those firms. ${TICKER} is a meme
+          coin paired to a stock token, not equity, not an ETF, not a managed fund. The pool can go
+          to zero. Nothing here is advice. This site does not deploy the coin.
         </p>
       </div>
     </main>

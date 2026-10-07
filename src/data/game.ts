@@ -1,16 +1,18 @@
 export const PAIR = "0x117cc2133c37b721f49de2a7a74833232b3b4c0c";
 export const CHAIN_ID = 4663;
 export const CHAIN_NAME = "Robinhood Chain";
+export const TICKER = "MRSTOCK";
+export const ANCHOR = "SPY";
 export const SUPPLY = 1_000_000_000;
-export const MIN_HOLD = 100_000;
-export const ELIGIBLE_ASSUMPTION = 0.7;
-export const LAUNCH_URL = "https://letscash.fun/launch";
+export const LAUNCH_URL = "https://app.long.xyz/";
 export const PAIR_URL = `https://robinhoodchain.blockscout.com/address/${PAIR}`;
 
-export const SPLIT = [
-  { key: "holders", pct: 4, label: "Holders", note: "Buys the ten seats, equal, pushed in kind" },
-  { key: "desk", pct: 0.7, label: "Desk", note: "Build, gas, the crank" },
-  { key: "pad", pct: 0.3, label: "LetsCash", note: "Platform, set at launch" },
+/** Long's own routing on new stock-paired pools. Not a tax this desk sets. */
+export const LONG_ROUTES = [
+  { key: "ai", pct: "5%", label: "$AI reserve", note: "Of stock-token fees on a new pair" },
+  { key: "burn", pct: "5%", label: "Buyback burn", note: "Of the meme paired to the stock" },
+  { key: "lp", pct: "LP", label: "Compounds", note: "Pool fees stay in the pool" },
+  { key: "creator", pct: "Fee", label: "Creator", note: "Unchanged. Long keeps its cut" },
 ] as const;
 
 export type Stat = { label: string; value: number };
@@ -50,8 +52,8 @@ export const TRADERS: Trader[] = [
     id: "tony",
     name: "Tony Stock",
     code: "TST-001",
-    photo: "/riders/tony.jpg",
-    face: "/riders/tony-face.jpg",
+    photo: "/riders/tony.jpg?v=ref",
+    face: "/riders/tony-face.jpg?v=ref",
     signature: "Tony Stock",
     stance: "GOOFY",
     bio: "Wall Street legend. Markets, maneuvers, and massive returns. Tony Stock blends precision, risk and creativity like no one else. Numbers are just another line to ride.",
@@ -63,8 +65,8 @@ export const TRADERS: Trader[] = [
     id: "bear",
     name: "Bear Stearns",
     code: "BRS-001",
-    photo: "/riders/bear.jpg",
-    face: "/riders/bear-face.jpg",
+    photo: "/riders/bear.jpg?v=ref",
+    face: "/riders/bear-face.jpg?v=ref",
     signature: "Bear Stearns",
     stance: "REGULAR",
     bio: "Lives for the next trade. If there's a loophole, he'll find it, leverage it, and double it. Discipline is for other people. It worked yesterday, it'll work again.",
@@ -76,8 +78,8 @@ export const TRADERS: Trader[] = [
     id: "ray",
     name: "Ray D'Ollie-O",
     code: "RDO-013",
-    photo: "/riders/ray.jpg",
-    face: "/riders/ray-face.jpg",
+    photo: "/riders/ray.jpg?v=ref",
+    face: "/riders/ray-face.jpg?v=ref",
     signature: "Ray D'Ollie-O",
     stance: "REGULAR",
     bio: "Has a principle for every trick and a 400-page explanation for every fall. Before he drops in, everyone must agree on what a ramp is.",
@@ -89,11 +91,11 @@ export const TRADERS: Trader[] = [
     id: "warren",
     name: "Warren Shreddit",
     code: "WSR-011",
-    photo: "/riders/warren.jpg",
-    face: "/riders/warren-face.jpg",
+    photo: "/riders/warren.jpg?v=ref",
+    face: "/riders/warren-face.jpg?v=ref",
     signature: "Warren Shreddit",
     stance: "GOOFY",
-    bio: "Half trader, half shredder. Finds alpha in unexpected places. Same lines on a mountain or a chart — discipline, flow, and conviction. The best trades, and the best runs, come from thinking differently.",
+    bio: "Half trader, half shredder. Finds alpha in unexpected places. Same lines on a mountain or a chart — discipline, flow, and conviction. Warren Shreddit believes the best trades (and runs) come from thinking differently.",
     line: "Think differently. Then push.",
     stats: stats([9, 3, 4, 8, 5, 7, 2, 9, 3]),
     chart: [30, 32, 31, 36, 35, 42, 48, 47, 54, 60, 66, 71],
@@ -102,8 +104,8 @@ export const TRADERS: Trader[] = [
     id: "wolf",
     name: "Wolf of Wall Ride",
     code: "WWR-007",
-    photo: "/riders/wolf.jpg",
-    face: "/riders/wolf-face.jpg",
+    photo: "/riders/wolf.jpg?v=ref",
+    face: "/riders/wolf-face.jpg?v=ref",
     signature: "Wolf of Wall Ride",
     stance: "REGULAR",
     bio: "Part trader, part skater, all momentum. The Wolf of Wall Ride turns volatility into a playground. He sees markets like spots — lines everywhere, opportunity in motion. Buy low, pop high, never stop rolling.",
@@ -127,7 +129,7 @@ export const SEATS: Seat[] = [
     ticker: "SPYLINE",
     name: "The pair on the wall",
     rider: "Tony Stock",
-    face: "/riders/tony-face.jpg",
+    face: "/riders/tony-face.jpg?v=ref",
     base: 456.7,
     blurb: "The tape everyone stares at. A desk seat, not a share of any fund.",
   },
@@ -135,7 +137,7 @@ export const SEATS: Seat[] = [
     ticker: "NASPOP",
     name: "Hang time",
     rider: "Wolf of Wall Ride",
-    face: "/riders/wolf-face.jpg",
+    face: "/riders/wolf-face.jpg?v=ref",
     base: 142.36,
     blurb: "Noisy tech tape. Pop high, eat floor, keep the line.",
   },
@@ -143,7 +145,7 @@ export const SEATS: Seat[] = [
     ticker: "DOWOLLIE",
     name: "The slow ramp",
     rider: "Ray D'Ollie-O",
-    face: "/riders/ray-face.jpg",
+    face: "/riders/ray-face.jpg?v=ref",
     base: 356.78,
     blurb: "A long explanation and a gentle ramp. Agree on the drop.",
   },
@@ -151,7 +153,7 @@ export const SEATS: Seat[] = [
     ticker: "VIXKICK",
     name: "Chaos seat",
     rider: "Bear Stearns",
-    face: "/riders/bear-face.jpg",
+    face: "/riders/bear-face.jpg?v=ref",
     base: 18.4,
     blurb: "Volatility as a playground. Can go to zero. So can the coin.",
   },
@@ -159,7 +161,7 @@ export const SEATS: Seat[] = [
     ticker: "BULLRUN",
     name: "The statue",
     rider: "Tony Stock",
-    face: "/riders/tony-face.jpg",
+    face: "/riders/tony-face.jpg?v=ref",
     base: 88.2,
     blurb: "Chrome bull energy. Momentum until it isn't.",
   },
@@ -167,7 +169,7 @@ export const SEATS: Seat[] = [
     ticker: "BEARPUT",
     name: "The briefcase",
     rider: "Bear Stearns",
-    face: "/riders/bear-face.jpg",
+    face: "/riders/bear-face.jpg?v=ref",
     base: 64.5,
     blurb: "Loophole, leverage, the other side of the ramp.",
   },
@@ -175,7 +177,7 @@ export const SEATS: Seat[] = [
     ticker: "SHRED",
     name: "Unexpected alpha",
     rider: "Warren Shreddit",
-    face: "/riders/warren-face.jpg",
+    face: "/riders/warren-face.jpg?v=ref",
     base: 27.15,
     blurb: "Same line on a mountain or a chart. Think differently.",
   },
@@ -183,7 +185,7 @@ export const SEATS: Seat[] = [
     ticker: "WOLFR",
     name: "Never stop rolling",
     rider: "Wolf of Wall Ride",
-    face: "/riders/wolf-face.jpg",
+    face: "/riders/wolf-face.jpg?v=ref",
     base: 33.9,
     blurb: "Buy low, pop high. Level one. Blockbusters up.",
   },
@@ -191,7 +193,7 @@ export const SEATS: Seat[] = [
     ticker: "TONY",
     name: "Goofy line",
     rider: "Tony Stock",
-    face: "/riders/tony-face.jpg",
+    face: "/riders/tony-face.jpg?v=ref",
     base: 12.48,
     blurb: "Numbers are a line. Ride it regular or goofy.",
   },
@@ -199,7 +201,7 @@ export const SEATS: Seat[] = [
     ticker: "BLOCK",
     name: "Level one",
     rider: "Warren Shreddit",
-    face: "/riders/warren-face.jpg",
+    face: "/riders/warren-face.jpg?v=ref",
     base: 9.71,
     blurb: "One shot, big doll. The seat that pays for the clip.",
   },
@@ -215,39 +217,14 @@ export function practicePrice(base: number, seed: number, now: number): number {
   return base * (1 + wave);
 }
 
-export function romeClock(now = new Date()): { h: number; min: number; s: number } {
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Europe/Rome",
-    hour: "2-digit",
-    minute: "2-digit",
-    second: "2-digit",
-    hourCycle: "h23",
-  }).formatToParts(now);
-  const grab = (type: string) => Number(parts.find((p) => p.type === type)?.value ?? "0");
-  return { h: grab("hour"), min: grab("minute"), s: grab("second") };
-}
-
-export function secondsToEpoch(now = new Date()): number {
-  const { h, min, s } = romeClock(now);
-  const sec = h * 3600 + min * 60 + s;
-  const marks = [0, 8 * 3600, 16 * 3600, 24 * 3600];
-  const next = marks.find((m) => m > sec) ?? 24 * 3600;
-  return next - sec;
-}
-
-export function formatClock(total: number): string {
-  const s = Math.max(0, Math.floor(total));
-  const h = Math.floor(s / 3600);
-  const m = Math.floor((s % 3600) / 60);
-  const r = s % 60;
-  return [h, m, r].map((n) => String(n).padStart(2, "0")).join(":");
-}
-
 export function formatUsd(n: number): string {
   if (n >= 1000) {
     return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
   }
-  return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 });
+  if (n >= 1) {
+    return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 });
+  }
+  return n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 4 });
 }
 
 export function formatNum(n: number): string {

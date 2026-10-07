@@ -1,4 +1,4 @@
-import { LAUNCH_URL, MIN_HOLD, PAIR, SUPPLY, formatNum } from "@/data/game";
+import { ANCHOR, CHAIN_NAME, LAUNCH_URL, PAIR, SUPPLY, TICKER, formatNum } from "@/data/game";
 import { BrandMark, ModeNav } from "@/components/chrome";
 
 export function RulesScreen() {
@@ -13,96 +13,80 @@ export function RulesScreen() {
         </header>
 
         <section className="metal hero">
-          <p className="kicker">How the desk is supposed to run</p>
-          <h1>Set once. Then the crank does the rest.</h1>
+          <p className="kicker">How the launch is supposed to run</p>
+          <h1>One pair. SPY. Then the ticker prints.</h1>
           <p>
-            MrStock is the stock-floor version of a holder index. Hood-style math, a published desk
-            of ten seats instead of “whatever is deepest this hour,” and a skate-shop character
-            select in front. The coin is launched on LetsCash, Robinhood Chain, into a locked pool.
-            The token address does not exist until that transaction. The address on the accept card
-            is the SPY pair.
+            MrStock is a skate-shop character select in front of a stock-paired meme. The coin
+            launches on Long, on {CHAIN_NAME}, against the {ANCHOR} stock token. There is no
+            LetsCash tax and no holder dividend. The address on the accept card is SPY. ${TICKER}{" "}
+            does not exist until someone signs the launch.
           </p>
         </section>
 
         <article className="slate rule">
           <h2>1 · The launch</h2>
           <p>
-            LetsCash mints a fixed supply and seeds a Uniswap pool in one transaction. Liquidity
-            stays locked. The tax is chosen once: 1%, 3%, 5%, or 10%. MrStock launches at{" "}
-            <b>5%</b>. After that, nobody — not the desk, not the pad — edits the rate.
-          </p>
-          <p>
-            Planned supply: <b>{formatNum(SUPPLY)}</b>. Quote asset and fee asset follow the pad:
-            the pool trades against ETH, and the tax pays out in ETH.
+            Open Long, connect a wallet on Robinhood Chain, and deploy with the anchor set to{" "}
+            <b>{ANCHOR}</b>. Name <b>MrStock</b>. Ticker <b>${TICKER}</b>. Planned supply{" "}
+            <b>{formatNum(SUPPLY)}</b>. Long mints the coin and opens the stock pair. The coin
+            address is whatever that transaction prints. Copy it back here only after it exists.
           </p>
           <p>
             <a href={LAUNCH_URL} target="_blank" rel="noreferrer">
-              Open the LetsCash launch desk
+              Open Long
             </a>
           </p>
         </article>
 
         <article className="slate rule">
-          <h2>2 · Where 5% goes</h2>
+          <h2>2 · What the pair actually is</h2>
+          <p>
+            SPY on this chain is a Robinhood stock token: economic exposure, not a share, not a
+            vote, not the ETF in your brokerage. Buying ${TICKER} sells that token into the pool.
+            Selling ${TICKER} buys it back out. Two things move the dollar mark: trades that change
+            the ratio, and the dollar price of SPY itself.
+          </p>
+          <p>
+            SPY stock token, for the record, not the coin: <span className="mono">{PAIR}</span>
+          </p>
+        </article>
+
+        <article className="slate rule">
+          <h2>3 · What Long routes</h2>
           <ul className="rule-list">
             <li>
-              <b>4.00%</b> — dividend wedge. Buys the ten seats in equal dollars and pushes them to
-              eligible holders. No claim button.
+              On new stock-paired pools, Long sends <b>5%</b> of stock-token fees to the $AI
+              reserve.
             </li>
             <li>
-              <b>0.70%</b> — desk. Build, execution gas, the crank that closes the epoch.
+              Another <b>5%</b> buys back and burns the meme paired to that stock. Anyone can
+              trigger it. No volume, no burn.
             </li>
-            <li>
-              <b>0.30%</b> — LetsCash platform.
-            </li>
+            <li>Liquidity-provider fees keep compounding in the pool. Creator fees stay as Long set them.</li>
           </ul>
-          <p>4 of 5 is holder money. A round trip is about ten percent before price.</p>
-        </article>
-
-        <article className="slate rule">
-          <h2>3 · The epoch</h2>
           <p>
-            Checks at 00:00, 08:00 and 16:00 Europe/Rome. The epoch settles only when the accrued
-            wedge covers ten buys plus the payouts. A quiet tape can skip a close. Holder balances
-            are read at the close. What you held yesterday does not count if you sold before the
-            snapshot.
-          </p>
-          <p>
-            Your share of a seat = your balance ÷ eligible supply × the amount of that seat bought
-            this epoch. Ten seats, equal split of the wedge, one seat one ticket.
+            That is their rule, not a 5% tax this desk chose. It is not a payout to holders, and it
+            is not the old LetsCash split. We do not edit it.
           </p>
         </article>
 
         <article className="slate rule">
-          <h2>4 · Who is in the set</h2>
+          <h2>4 · The floor</h2>
           <p>
-            At least <b>{formatNum(MIN_HOLD)}</b> $MRSTOCK — 0.01% of a 1 billion supply — at the
-            snapshot. Pools, the distributor, and burn addresses stay out. Under the line, you
-            still trade. You just don’t get that epoch.
+            Ten lines on the desk — SPYLINE, NASPOP, DOWOLLIE, VIXKICK, BULLRUN, BEARPUT, SHRED,
+            WOLFR, TONY, BLOCK — are the riders’ parody tape. Practice prices. Not a basket the
+            coin buys, not seats you get paid, not a copy of any live index.
           </p>
         </article>
 
         <article className="slate rule">
-          <h2>5 · The ten seats</h2>
-          <p>
-            Not a copy of a live liquidity ranking. The desk publishes ten stock-flavored lines —
-            SPYLINE, NASPOP, DOWOLLIE, VIXKICK, BULLRUN, BEARPUT, SHRED, WOLFR, TONY, BLOCK — at
-            10% each. They are meme seats with rider coverage, not shares of any company and not
-            the ETF on the wall. The practice tape on the desk page is a clock, not a quote.
-          </p>
-          <p>
-            SPY pair, for the record, not the token: <span className="mono">{PAIR}</span>
-          </p>
-        </article>
-
-        <article className="slate rule">
-          <h2>6 · What this is not</h2>
+          <h2>5 · What this is not</h2>
           <ul className="rule-list">
             <li>Not Tony Hawk, not those investors, not those banks. Parody names, original riders.</li>
-            <li>Not a fund, not an index fund, not diversified in any serious sense. One chain, one tape, ten seats that can fall together.</li>
-            <li>Not a promise of yield. No volume, no dividend. A big epoch buys through thin pools and moves the price against itself.</li>
-            <li>Not live yet. Until the coin prints, the countdown is just the clock the crank will use.</li>
-            <li>Not advice. You can lose the entire position, including tokens that show up in your wallet.</li>
+            <li>Not a fund, not an ETF, not SPY itself. One meme, one stock-token pair.</li>
+            <li>Not a dividend. Holding does not pay you the ten. The ten are a joke on the wall.</li>
+            <li>Not deployed by this website. A browser page cannot sign the launch.</li>
+            <li>Not advice. You can lose the entire position.</li>
           </ul>
         </article>
       </div>

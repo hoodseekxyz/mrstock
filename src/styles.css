@@ -81,7 +81,7 @@
 
 .stage-photo {
   object-fit: cover;
-  object-position: center 22%;
+  object-position: center 46%;
   transition: transform 420ms ease;
 }
 
@@ -874,9 +874,17 @@
   gap: 0.7rem;
 }
 
-.split-row,
-.epoch-grid {
+.split-row {
   grid-template-columns: repeat(4, 1fr);
+}
+
+.split-row.three {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.desk-note {
+  margin: 0.15rem 0 0.35rem;
+  opacity: 0.8;
 }
 
 .epoch-grid {
@@ -1130,6 +1138,7 @@
     font-size: 0.78rem;
   }
   .split-row,
+  .split-row.three,
   .epoch-grid,
   .calc-grid {
     grid-template-columns: 1fr 1fr;
@@ -1147,6 +1156,7 @@
 
 @media (max-width: 640px) {
   .split-row,
+  .split-row.three,
   .facts,
   .calc-out,
   .epoch-grid,

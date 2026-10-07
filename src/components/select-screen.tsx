@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
+  ANCHOR,
   LAUNCH_URL,
   PAIR,
   PAIR_URL,
+  TICKER,
   TRADERS,
   oppositeStance,
   type Trader,
@@ -68,7 +70,7 @@ export function SelectScreen() {
         src={trader.photo}
         alt=""
         style={{
-          transform: `scaleX(${spins % 2 ? -1 : 1}) rotateY(${yaw}deg) scale(1.62)`,
+          transform: `scaleX(${spins % 2 ? -1 : 1}) rotateY(${yaw}deg) scale(1.05)`,
         }}
       />
       <div className="stage-shade" />
@@ -222,32 +224,33 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
         <p className="kicker">Riding with {trader.name}</p>
         <h2 id="accept-title">$MRSTOCK</h2>
         <p className="accept-lead">
-          The coin is not this pair. Long on LetsCash and the token address prints. Until then the
-          desk shows the rules, not a payout.
+          This address is the SPY stock token. It is not $MRSTOCK. Deploy on Long against SPY and
+          the coin address prints on that transaction. This page cannot sign it.
         </p>
         <dl className="pair-block">
           <div>
-            <dt>Pair · SPY · not the token</dt>
+            <dt>SPY · the quote · not the coin</dt>
             <dd>{PAIR}</dd>
           </div>
         </dl>
         <div className="accept-actions">
           <button type="button" className="solid" onClick={copy}>
-            {copied ? "Pair copied" : "Copy pair"}
+            {copied ? "SPY copied" : "Copy SPY"}
           </button>
           <a className="solid ghost" href={PAIR_URL} target="_blank" rel="noreferrer">
-            View pair
+            View SPY
           </a>
           <a className="solid ghost" href={LAUNCH_URL} target="_blank" rel="noreferrer">
-            Launch on LetsCash
+            Deploy on Long
           </a>
           <Link className="solid" to="/desk">
             Open the desk
           </Link>
         </div>
         <p className="fine">
-          5% at launch: 4% buys the ten seats for holders, 0.7% keeps the desk running, 0.3% is
-          LetsCash. Parody riders. Not those people. Not those firms. Not a fund. Not advice.
+          Name MrStock, ticker ${TICKER}, anchor {ANCHOR}. No 5% holder tax. Long routes a slice of
+          new-pair fees to a burn and to the $AI reserve. Parody riders. Not those people. Not
+          those firms. Not a fund. Not advice.
         </p>
         <button type="button" className="text-back" onClick={onClose}>
           Back to the floor
