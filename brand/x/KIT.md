@@ -11,7 +11,7 @@ Paste these. The pictures are the five riders from the desk, not those people an
 
 ## Bio
 
-160 karakter sınırı. Bu 118.
+160 karakter sınırı. Bu 115.
 
 ```
 Tony Stock Pro Trader. Five riders. One tape. $MRSTOCK paired to SPY on Long. Parody. Not those people. Not a fund.
