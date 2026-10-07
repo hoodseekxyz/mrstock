@@ -1,5 +1,5 @@
 import { ANCHOR, CHAIN_NAME, LAUNCH_URL, PAIR, SUPPLY, TICKER, formatNum } from "@/data/game";
-import { BrandMark, ModeNav } from "@/components/chrome";
+import { BrandMark, CaBox, ModeNav } from "@/components/chrome";
 
 export function RulesScreen() {
   return (
@@ -22,6 +22,8 @@ export function RulesScreen() {
             signs the launch.
           </p>
         </section>
+
+        <CaBox />
 
         <article className="slate rule">
           <h2>1 · The launch</h2>

@@ -12,7 +12,7 @@ import {
   formatUsd,
   practicePrice,
 } from "@/data/game";
-import { BrandMark, ModeNav } from "@/components/chrome";
+import { BrandMark, CaBox, ModeNav } from "@/components/chrome";
 
 export function DeskScreen() {
   const [now] = useState(() => Date.now());
@@ -183,6 +183,8 @@ export function DeskScreen() {
             </div>
           </dl>
         </section>
+
+        <CaBox />
 
         <section className="slate pair-strip">
           <div>

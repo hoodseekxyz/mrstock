@@ -80,14 +80,16 @@
 }
 
 .stage-photo {
-  object-fit: cover;
-  object-position: center 46%;
+  object-fit: contain;
+  object-position: center center;
+  background: #14110e;
+  transform: scaleX(var(--flip, 1)) rotateY(var(--yaw, 0deg)) scale(0.92);
   transition: transform 420ms ease;
 }
 
 .stage-shade {
   background:
-    radial-gradient(ellipse at 50% 40%, transparent 0%, rgba(0, 0, 0, 0.12) 36%, rgba(0, 0, 0, 0.62) 100%);
+    radial-gradient(ellipse at 50% 42%, transparent 0 34%, rgba(0, 0, 0, 0.28) 68%, rgba(0, 0, 0, 0.72) 100%);
   pointer-events: none;
 }
 
@@ -226,6 +228,58 @@
   color: #127a45;
   font-family: var(--font-mono);
   font-size: 0.78rem;
+}
+
+.ca-box {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 0.75rem;
+  max-width: 40rem;
+  min-width: 0;
+}
+
+.ca-box.inset {
+  background: rgba(8, 10, 12, 0.35);
+  border: 1px solid rgba(20, 24, 28, 0.18);
+  border-radius: 0.8rem;
+  margin-top: 0.7rem;
+}
+
+.ca-label,
+.ca-x {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ca-x {
+  color: inherit;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.ca-addr {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  background: rgba(8, 12, 14, 0.08);
+  color: inherit;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.38rem 0.55rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ca-addr:disabled {
+  opacity: 0.75;
+  cursor: default;
 }
 
 .spark {
@@ -1113,6 +1167,13 @@
     align-self: center;
     z-index: 2;
   }
+  .stage-photo {
+    top: 4.2rem;
+    bottom: auto;
+    width: 100%;
+    height: 38vh;
+    transform: scaleX(var(--flip, 1)) rotateY(var(--yaw, 0deg)) scale(0.82);
+  }
   .stat-card,
   .bio {
     grid-column: 1;
@@ -1155,6 +1216,14 @@
 }
 
 @media (max-width: 640px) {
+  .ca-box {
+    flex-wrap: wrap;
+  }
+  .ca-addr {
+    flex-basis: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
   .split-row,
   .split-row.three,
   .facts,

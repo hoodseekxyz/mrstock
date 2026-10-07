@@ -10,7 +10,7 @@ import {
   oppositeStance,
   type Trader,
 } from "@/data/game";
-import { BrandMark, GlobeMark, Meter, MiniChart, ModeNav, Spark } from "@/components/chrome";
+import { BrandMark, CaBox, GlobeMark, Meter, MiniChart, ModeNav, Spark } from "@/components/chrome";
 
 const TAPE = [
   { name: "S&P 500", value: "4,567.23", change: "+1.26%" },
@@ -92,6 +92,7 @@ export function SelectScreen() {
               ))}
               <Spark values={trader.chart} />
             </div>
+            <CaBox />
           </div>
           <div className="top-brand">
             <BrandMark />
@@ -249,6 +250,7 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
           Name MrStock, ticker ${TICKER}, anchor {ANCHOR}. Parody riders. Not those people. Not
           those firms. Not a fund. Not advice.
         </p>
+        <CaBox tone="inset" />
         <button type="button" className="text-back" onClick={onClose}>
           Back to the floor
         </button>
