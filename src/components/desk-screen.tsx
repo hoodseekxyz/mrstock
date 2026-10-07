@@ -51,8 +51,7 @@ export function DeskScreen() {
           <p>
             ${TICKER} launches on Long, paired to the SPY stock token, not to ETH. A buy sells SPY
             into the pool. If SPY’s dollar price rises and the pool ratio does not, the coin’s
-            dollar mark inside that pair rises with it. The coin address does not exist until that
-            launch is signed.
+            dollar mark inside that pair rises with it. The coin contract is on the plaque.
           </p>
         </section>
 
