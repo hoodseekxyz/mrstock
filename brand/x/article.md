@@ -26,7 +26,7 @@ $MRSTOCK is built to trade against SPY, not against ETH.
 
 On Long, the quote asset is the SPY stock token. A buy sells that token into the pool. A sell pulls it back out. Two things move the dollar mark: trades that change the ratio, and the dollar price of SPY itself. If the stock rips and the pool ratio does not, the coin's dollar mark inside that pair rises with the tape.
 
-The SPY line on mrstock.xyz is the stock token, not the coin. The coin contract on the plaque is 0xb5bf0616d4bf9ab6dfbe1eb23c5ffbf136f61e18.
+The SPY line on mrstock.xyz is the stock token, not the coin. The plaque says launch very soon. The contract prints when it does.
 
 Holding does not pay you ten seats. The ten lines on the desk are a parody tape.
 

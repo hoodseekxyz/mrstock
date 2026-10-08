@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { COIN, X_HANDLE, X_URL } from "@/data/game";
+import { LAUNCH_LINE, X_HANDLE, X_URL } from "@/data/game";
 
 export function BrandMark({ compact = false }: { compact?: boolean }) {
   return (
@@ -40,25 +39,10 @@ export function ModeNav({ current }: { current: "ride" | "desk" | "rules" }) {
 }
 
 export function CaBox({ tone = "metal" }: { tone?: "metal" | "inset" }) {
-  const [copied, setCopied] = useState(false);
-  const live = COIN.length > 0;
-
-  async function copy() {
-    if (!live) return;
-    try {
-      await navigator.clipboard.writeText(COIN);
-      setCopied(true);
-    } catch {
-      setCopied(false);
-    }
-  }
-
   return (
-    <div className={tone === "metal" ? "metal ca-box" : "ca-box inset"}>
-      <span className="ca-label">CA</span>
-      <button type="button" className="ca-addr" onClick={copy} disabled={!live}>
-        {live ? (copied ? "Copied" : COIN) : "Prints on launch"}
-      </button>
+    <div className={tone === "metal" ? "metal ca-box" : "ca-box inset"} aria-label="Launch status">
+      <span className="ca-label">Soon</span>
+      <p className="ca-soon">{LAUNCH_LINE}</p>
       <a className="ca-x" href={X_URL} target="_blank" rel="noreferrer">
         {X_HANDLE}
       </a>

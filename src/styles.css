@@ -261,25 +261,16 @@
   font-weight: 700;
 }
 
-.ca-addr {
+.ca-soon {
   flex: 1;
   min-width: 0;
-  border: 0;
-  border-radius: 0.5rem;
-  background: rgba(8, 12, 14, 0.08);
-  color: inherit;
-  text-align: left;
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  padding: 0.38rem 0.55rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.ca-addr:disabled {
-  opacity: 0.75;
-  cursor: default;
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1.1;
 }
 
 .spark {
@@ -1219,10 +1210,8 @@
   .ca-box {
     flex-wrap: wrap;
   }
-  .ca-addr {
+  .ca-soon {
     flex-basis: 100%;
-    white-space: normal;
-    overflow-wrap: anywhere;
   }
   .split-row,
   .split-row.three,

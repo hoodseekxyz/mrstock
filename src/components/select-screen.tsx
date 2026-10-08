@@ -223,8 +223,8 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
         <p className="kicker">Riding with {trader.name}</p>
         <h2 id="accept-title">$MRSTOCK</h2>
         <p className="accept-lead">
-          This address is the SPY stock token. It is not $MRSTOCK. Deploy on Long against SPY and
-          the coin address prints on that transaction. This page cannot sign it.
+          This address is the SPY stock token. It is not $MRSTOCK. The coin launches very soon on
+          Long, against SPY. This page cannot sign it.
         </p>
         <dl className="pair-block">
           <div>

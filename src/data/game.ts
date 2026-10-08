@@ -6,8 +6,9 @@ export const ANCHOR = "SPY";
 export const SUPPLY = 1_000_000_000;
 export const LAUNCH_URL = "https://app.long.xyz/";
 export const PAIR_URL = `https://robinhoodchain.blockscout.com/address/${PAIR}`;
-/** Coin contract. Pasted as given. Not the SPY pair. */
-export const COIN = "0xb5bf0616d4bf9ab6dfbe1eb23c5ffbf136f61e18";
+/** Empty on purpose until the real drop. Not the SPY pair. */
+export const COIN = "";
+export const LAUNCH_LINE = "Launch very soon";
 export const X_URL = "https://x.com/MrStockXYZ";
 export const X_HANDLE = "@MrStockXYZ";
 

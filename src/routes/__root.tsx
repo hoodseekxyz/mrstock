@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Tony Stock Pro Trader. Pick a rider. $MRSTOCK launches on Long, paired to SPY, not ETH. The address on the card is the SPY stock token. The coin prints when you sign. Parody. Not a fund.",
+          "Tony Stock Pro Trader. Pick a rider. $MRSTOCK launches very soon on Long, paired to SPY, not ETH. The address on the card is the SPY stock token. Parody. Not a fund.",
       },
       { name: "theme-color", content: "#121418" },
     ],

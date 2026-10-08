@@ -18,7 +18,7 @@ export function RulesScreen() {
           <p>
             MrStock is a skate-shop character select in front of a stock-paired meme. The coin
             launches on Long, on {CHAIN_NAME}, against the {ANCHOR} stock token. There is no holder
-            dividend. The address on the accept card is SPY. The ${TICKER} contract is on the plaque.
+            dividend. The address on the accept card is SPY. The plaque says launch very soon.
           </p>
         </section>
 
@@ -29,8 +29,8 @@ export function RulesScreen() {
           <p>
             Open Long, connect a wallet on Robinhood Chain, and deploy with the anchor set to{" "}
             <b>{ANCHOR}</b>. Name <b>MrStock</b>. Ticker <b>${TICKER}</b>. Planned supply{" "}
-            <b>{formatNum(SUPPLY)}</b>. Long mints the coin and opens the stock pair. The contract
-            on the plaque is the one pasted in. The SPY line is still the quote, not the coin.
+            <b>{formatNum(SUPPLY)}</b>. Long mints the coin and opens the stock pair. No contract is
+            posted yet. It prints when the launch does. The SPY line is still the quote, not the coin.
           </p>
           <p>
             <a href={LAUNCH_URL} target="_blank" rel="noreferrer">
