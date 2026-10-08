@@ -20,15 +20,17 @@ Wolf of Wall Ride is the grey suit and the red tie. Volatility is a spot. Buy lo
 
 Pick one. Arrows move the floor. Rotate flips the stance. Bio is the chalkboard. Accept opens the card.
 
-## The pair
+## The tax
 
-$MRSTOCK is built to trade against SPY, not against ETH.
+$MRSTOCK is built for LetsCash, not for a stock-token pair.
 
-On Long, the quote asset is the SPY stock token. A buy sells that token into the pool. A sell pulls it back out. Two things move the dollar mark: trades that change the ratio, and the dollar price of SPY itself. If the stock rips and the pool ratio does not, the coin's dollar mark inside that pair rises with the tape.
+The tax is 3% on the buy and 3% on the sell, set once. LetsCash keeps 0.3% of the trade. 0.7% is the desk. 2% is named to a helper that buys three stock tokens and sends them to holders.
 
-The SPY line on mrstock.xyz is the stock token, not the coin. The plaque says launch very soon. The contract prints when it does.
+That helper is not deployed. The coin does not open until the helper is the fee recipient. A wallet is not good enough for the 2%. If the pot does not clear the cost of the buy, it waits. No volume, no stock.
 
-Holding does not pay you ten seats. The ten lines on the desk are a parody tape.
+The plaque says launch very soon. The contract prints when it does.
+
+The ten lines on the desk are a parody tape. They are not the three.
 
 ## What this is not
 

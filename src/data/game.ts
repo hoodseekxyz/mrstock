@@ -2,13 +2,18 @@ export const PAIR = "0x117cc2133c37b721f49de2a7a74833232b3b4c0c";
 export const CHAIN_ID = 4663;
 export const CHAIN_NAME = "Robinhood Chain";
 export const TICKER = "MRSTOCK";
-export const ANCHOR = "SPY";
 export const SUPPLY = 1_000_000_000;
-export const LAUNCH_URL = "https://app.long.xyz/";
+export const FEE_URL = "https://letscash.fun/about";
 export const PAIR_URL = `https://robinhoodchain.blockscout.com/address/${PAIR}`;
-/** Empty on purpose until the real drop. Not the SPY pair. */
+/** Empty on purpose until the real drop. Not a stock token. */
 export const COIN = "";
 export const LAUNCH_LINE = "Launch very soon";
+/** LetsCash keeps 0.3% of the trade at every rate. The rest is the launch share. */
+export const TAX = 3;
+export const FEE_PLATFORM = 0.3;
+export const FEE_DESK = 0.7;
+export const FEE_BASKET = 2;
+export const BASKET_SEATS = 3;
 export const X_URL = "https://x.com/MrStockXYZ";
 export const X_HANDLE = "@MrStockXYZ";
 

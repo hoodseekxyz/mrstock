@@ -1,12 +1,14 @@
 import { useMemo, useState } from "react";
 import {
-  ANCHOR,
+  BASKET_SEATS,
   CHAIN_ID,
-  LAUNCH_URL,
-  PAIR,
-  PAIR_URL,
+  FEE_BASKET,
+  FEE_DESK,
+  FEE_PLATFORM,
+  FEE_URL,
   SEATS,
   SUPPLY,
+  TAX,
   TICKER,
   formatNum,
   formatUsd,
@@ -14,25 +16,27 @@ import {
 } from "@/data/game";
 import { BrandMark, CaBox, ModeNav } from "@/components/chrome";
 
-export function DeskScreen() {
-  const [now] = useState(() => Date.now());
-  const [hold, setHold] = useState(1_000_000);
-  const [spy, setSpy] = useState(580);
-  const [ratio, setRatio] = useState(0.000002);
+const PRACTICE_NOW = Date.UTC(2026, 0, 2, 14, 30, 0);
 
-  const mark = hold * ratio * spy;
-  const markTape = hold * ratio * spy * 1.1;
-  const markTrade = hold * ratio * 2 * spy;
+export function DeskScreen() {
+  const [hold, setHold] = useState(1_000_000);
+  const [trade, setTrade] = useState(10_000);
+
+  const platform = trade * (FEE_PLATFORM / 100);
+  const desk = trade * (FEE_DESK / 100);
+  const basket = trade * (FEE_BASKET / 100);
+  const round = trade * ((TAX * 2) / 100);
+  const slice = (hold / SUPPLY) * basket;
 
   const quotes = useMemo(
     () =>
       SEATS.map((seat, i) => {
-        const px = practicePrice(seat.base, i + 1, now);
-        const prev = practicePrice(seat.base, i + 1, now - 60_000);
+        const px = practicePrice(seat.base, i + 1, PRACTICE_NOW);
+        const prev = practicePrice(seat.base, i + 1, PRACTICE_NOW - 60_000);
         const change = ((px - prev) / prev) * 100;
         return { ...seat, px, change };
       }),
-    [now],
+    [],
   );
 
   return (
@@ -46,30 +50,32 @@ export function DeskScreen() {
         </header>
 
         <section className="metal hero">
-          <p className="kicker">MrStock · Anchored to {ANCHOR}</p>
-          <h1>The coin trades the tape.</h1>
+          <p className="kicker">MrStock · LetsCash · {TAX}%</p>
+          <h1>Three seats. Not ten.</h1>
           <p>
-            ${TICKER} launches on Long, paired to the SPY stock token, not to ETH. A buy sells SPY
-            into the pool. If SPY’s dollar price rises and the pool ratio does not, the coin’s
-            dollar mark inside that pair rises with it. The plaque says launch very soon.
+            ${TICKER} launches on LetsCash, on Robinhood Chain. The tax is {TAX}% on the buy and{" "}
+            {TAX}% on the sell, set once, and it cannot move. {FEE_PLATFORM}% is LetsCash.{" "}
+            {FEE_DESK}% is the desk. {FEE_BASKET}% is named to a helper that buys {BASKET_SEATS}{" "}
+            stock tokens and pushes them to holders. That helper is not deployed. The coin does not
+            open until it is the fee recipient. Someone else’s all-time high is not this chart.
           </p>
         </section>
 
         <section className="split-row three">
+          <article className="slate split">
+            <strong>{FEE_PLATFORM.toFixed(1)}%</strong>
+            <h2>LetsCash</h2>
+            <p>Platform cut, on every trade, not ours. Their burn, their lights.</p>
+          </article>
+          <article className="slate split">
+            <strong>{FEE_DESK.toFixed(1)}%</strong>
+            <h2>The desk</h2>
+            <p>Build, gas, the crank. A named wallet. Not a dividend.</p>
+          </article>
           <article className="slate split hot">
-            <strong>SPY</strong>
-            <h2>The quote</h2>
-            <p>Robinhood stock token. The address on the card. Not ${TICKER}.</p>
-          </article>
-          <article className="slate split">
-            <strong>Lock</strong>
-            <h2>Buys stock in</h2>
-            <p>Buying the meme deposits SPY into the pool. Selling pulls it back out.</p>
-          </article>
-          <article className="slate split">
-            <strong>+SPY</strong>
-            <h2>Follows the tape</h2>
-            <p>Same coins of SPY, higher stock price, higher dollar mark. Ratio still moves on trades.</p>
+            <strong>{FEE_BASKET.toFixed(1)}%</strong>
+            <h2>{BASKET_SEATS} stocks</h2>
+            <p>The helper buys three names and sends them out. Dust waits. No volume, no buy.</p>
           </article>
         </section>
 
@@ -77,7 +83,7 @@ export function DeskScreen() {
           <header className="board-head">
             <div>
               <h2>The floor</h2>
-              <p>Ten parody lines. Rider coverage. Not a payout, and not a live quote.</p>
+              <p>Ten parody lines. Not the basket. The basket is three stock tokens, and it is not live.</p>
             </div>
             <span className="pill">Practice tape</span>
           </header>
@@ -115,13 +121,26 @@ export function DeskScreen() {
 
         <section className="metal calc">
           <header>
-            <h2>What a SPY move does to a holding you type</h2>
+            <h2>What one trade owes the {TAX}%</h2>
             <p>
-              Practice numbers. Two knobs: the stock’s dollar price, and how much SPY one coin is
-              worth inside the pair. Not a forecast. Not the live pool.
+              Practice numbers. A round trip is {TAX * 2}% before the price moves. Your slice is
+              your share of that one basket buy, not a day, and not a payment. The helper is not
+              deployed, so nothing here has been bought.
             </p>
           </header>
           <div className="calc-grid">
+            <label>
+              Trade size
+              <input
+                type="range"
+                min={100}
+                max={100000}
+                step={100}
+                value={trade}
+                onChange={(e) => setTrade(Number(e.target.value))}
+              />
+              <strong>{formatUsd(trade)}</strong>
+            </label>
             <label>
               You hold
               <input
@@ -132,49 +151,31 @@ export function DeskScreen() {
                 value={hold}
                 onChange={(e) => setHold(Number(e.target.value))}
               />
-              <strong>{formatNum(hold)} {TICKER}</strong>
-            </label>
-            <label>
-              Practice SPY price
-              <input
-                type="range"
-                min={400}
-                max={800}
-                step={1}
-                value={spy}
-                onChange={(e) => setSpy(Number(e.target.value))}
-              />
-              <strong>{formatUsd(spy)}</strong>
-            </label>
-            <label>
-              SPY inside one coin
-              <input
-                type="range"
-                min={1}
-                max={100}
-                step={1}
-                value={Math.round(ratio * 1_000_000)}
-                onChange={(e) => setRatio(Number(e.target.value) / 1_000_000)}
-              />
-              <strong>{ratio.toFixed(6)} SPY</strong>
+              <strong>
+                {formatNum(hold)} {TICKER}
+              </strong>
             </label>
           </div>
           <dl className="calc-out">
             <div>
-              <dt>Dollar mark now</dt>
-              <dd>{formatUsd(mark)}</dd>
+              <dt>LetsCash {FEE_PLATFORM}%</dt>
+              <dd>{formatUsd(platform)}</dd>
             </div>
             <div>
-              <dt>If SPY is +10%</dt>
-              <dd>{formatUsd(markTape)}</dd>
+              <dt>Desk {FEE_DESK}%</dt>
+              <dd>{formatUsd(desk)}</dd>
             </div>
             <div>
-              <dt>If the ratio doubles</dt>
-              <dd>{formatUsd(markTrade)}</dd>
+              <dt>Basket {FEE_BASKET}%</dt>
+              <dd>{formatUsd(basket)}</dd>
             </div>
             <div>
-              <dt>Supply at launch</dt>
-              <dd>{formatNum(SUPPLY)}</dd>
+              <dt>Your slice of that buy</dt>
+              <dd>{formatUsd(slice)}</dd>
+            </div>
+            <div>
+              <dt>Round trip</dt>
+              <dd>{formatUsd(round)}</dd>
             </div>
             <div>
               <dt>Chain</dt>
@@ -187,23 +188,25 @@ export function DeskScreen() {
 
         <section className="slate pair-strip">
           <div>
-            <p className="kicker">SPY stock token · not the coin</p>
-            <p className="mono pair-addr">{PAIR}</p>
+            <p className="kicker">Helper · not deployed</p>
+            <p>
+              The {FEE_BASKET}% has to land on a contract that can buy three stock tokens and send
+              them out, and that cannot be repointed after the launch. A wallet is not that. No
+              helper, no coin.
+            </p>
           </div>
           <div className="pair-links">
-            <a href={PAIR_URL} target="_blank" rel="noreferrer">
-              Blockscout
-            </a>
-            <a href={LAUNCH_URL} target="_blank" rel="noreferrer">
-              Deploy on Long
+            <a href={FEE_URL} target="_blank" rel="noreferrer">
+              LetsCash fee rules
             </a>
           </div>
         </section>
 
         <p className="footer-note">
-          Parody desk. These riders are not those people and not those firms. ${TICKER} is a meme
-          coin paired to a stock token, not equity, not an ETF, not a managed fund. The pool can go
-          to zero. Nothing here is advice. This site does not deploy the coin.
+          Parody desk. These riders are not those people and not those firms. ${TICKER} is a meme,
+          not equity, not an ETF, not a managed fund, and not another project’s index. The pool can
+          go to zero. A round trip pays {TAX * 2}% before the price moves. Nothing here is advice.
+          This site does not deploy the coin or the helper.
         </p>
       </div>
     </main>

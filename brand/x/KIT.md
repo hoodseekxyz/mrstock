@@ -11,10 +11,10 @@ Paste these. The pictures are the five riders from the desk, not those people an
 
 ## Bio
 
-160 karakter sınırı. Bu 115.
+160 karakter sınırı. Bu 113.
 
 ```
-Tony Stock Pro Trader. Five riders. One tape. $MRSTOCK paired to SPY on Long. Parody. Not those people. Not a fund.
+Tony Stock Pro Trader. Five riders. One tape. $MRSTOCK on LetsCash, tax 3%. Parody. Not those people. Not a fund.
 ```
 
 Link alanına: `https://mrstock.xyz`
@@ -24,13 +24,16 @@ Link alanına: `https://mrstock.xyz`
 ```
 The desk is open.
 
-Five riders. One pair. SPY, not ETH.
-Accept a rider. Then Long.
+Five riders. One tape.
+LetsCash. Tax 3%, once.
+0.3 platform. 0.7 desk. 2 buys three stocks.
+
+The helper is not deployed. The coin waits for it.
 
 mrstock.xyz
 $MRSTOCK
 
-Parody floor. Not a fund. Not those firms. The address on the site is the SPY stock token. The coin prints when the launch is signed.
+Parody floor. Not a fund. Not those firms. Not another index.
 ```
 
 Görsel: [cover-5x2.jpg](cover-5x2.jpg)

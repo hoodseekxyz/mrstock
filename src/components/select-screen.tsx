@@ -1,10 +1,12 @@
 import { useEffect, useState, type CSSProperties } from "react";
 import { Link } from "@tanstack/react-router";
 import {
-  ANCHOR,
-  LAUNCH_URL,
-  PAIR,
-  PAIR_URL,
+  BASKET_SEATS,
+  FEE_BASKET,
+  FEE_DESK,
+  FEE_PLATFORM,
+  FEE_URL,
+  TAX,
   TICKER,
   TRADERS,
   oppositeStance,
@@ -205,17 +207,6 @@ export function SelectScreen() {
 }
 
 function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }) {
-  const [copied, setCopied] = useState(false);
-
-  async function copy() {
-    try {
-      await navigator.clipboard.writeText(PAIR);
-      setCopied(true);
-    } catch {
-      setCopied(false);
-    }
-  }
-
   return (
     <div className="modal" role="dialog" aria-modal="true" aria-labelledby="accept-title">
       <button className="modal-dim" type="button" aria-label="Close" onClick={onClose} />
@@ -223,32 +214,29 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
         <p className="kicker">Riding with {trader.name}</p>
         <h2 id="accept-title">$MRSTOCK</h2>
         <p className="accept-lead">
-          This address is the SPY stock token. It is not $MRSTOCK. The coin launches very soon on
-          Long, against SPY. This page cannot sign it.
+          LetsCash. Tax {TAX}%, locked at launch. {FEE_PLATFORM}% is the platform. {FEE_DESK}% is
+          the desk. {FEE_BASKET}% is named to a helper that buys {BASKET_SEATS} stock tokens for
+          holders. That helper is not deployed. The coin waits for it. This page cannot sign either.
         </p>
         <dl className="pair-block">
           <div>
-            <dt>SPY · the quote · not the coin</dt>
-            <dd>{PAIR}</dd>
+            <dt>Tax · set once · not live</dt>
+            <dd>
+              {FEE_PLATFORM}% / {FEE_DESK}% / {FEE_BASKET}%
+            </dd>
           </div>
         </dl>
         <div className="accept-actions">
-          <button type="button" className="solid" onClick={copy}>
-            {copied ? "SPY copied" : "Copy SPY"}
-          </button>
-          <a className="solid ghost" href={PAIR_URL} target="_blank" rel="noreferrer">
-            View SPY
-          </a>
-          <a className="solid ghost" href={LAUNCH_URL} target="_blank" rel="noreferrer">
-            Deploy on Long
+          <a className="solid ghost" href={FEE_URL} target="_blank" rel="noreferrer">
+            LetsCash fee rules
           </a>
           <Link className="solid" to="/desk">
             Open the desk
           </Link>
         </div>
         <p className="fine">
-          Name MrStock, ticker ${TICKER}, anchor {ANCHOR}. Parody riders. Not those people. Not
-          those firms. Not a fund. Not advice.
+          Name MrStock, ticker ${TICKER}, tax {TAX}%. {BASKET_SEATS} stocks, not ten. Not Hood10.
+          Not those people. Not those firms. Not a fund. Not advice.
         </p>
         <CaBox tone="inset" />
         <button type="button" className="text-back" onClick={onClose}>
