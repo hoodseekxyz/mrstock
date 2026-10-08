@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { BASKET, DESK_WALLET, LAUNCH_LINE, QUOTE, X_HANDLE, X_URL, tokenUrl } from "@/data/game";
+import { BASKET, DESK_WALLET, HELPER, LAUNCH_LINE, QUOTE, X_HANDLE, X_URL, addressUrl, tokenUrl } from "@/data/game";
 
 export function BrandMark({ compact = false }: { compact?: boolean }) {
   return (
@@ -83,11 +83,17 @@ export function BasketList() {
         </div>
       ))}
       <p className="basket-note">
-        Pool is {QUOTE}. These three are locked when the helper deploys. Nothing gets added inside
-        that contract. A fourth name is a new helper, and LetsCash can hand the fee stream to it.
-        The desk wallet takes the 0.7% only.
+        Pool is {QUOTE}. These three are locked in the helper. Nothing gets added inside that
+        contract. A fourth name is a new helper, and LetsCash can hand the fee stream to it. The
+        desk wallet takes the 0.7% only.
       </p>
       <CopyLine label="Desk" value={DESK_WALLET} />
+      <div className="basket-row">
+        <CopyLine label="Helper" value={HELPER} />
+        <a href={addressUrl(HELPER)} target="_blank" rel="noreferrer">
+          Contract
+        </a>
+      </div>
     </div>
   );
 }

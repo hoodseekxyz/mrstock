@@ -6,6 +6,8 @@ export const FEE_URL = "https://letscash.fun/about";
 export const QUOTE = "ETH";
 /** 0.7% only. Not the basket. */
 export const DESK_WALLET = "0xa18d8924482B29c16652345C38620EC83f436c07";
+/** On chain. Not bound to a coin yet. */
+export const HELPER = "0x8E993d7871F5c1EBD9433e3740508EDa12BC3881";
 /** Empty on purpose until the real drop. Not a stock token. */
 export const COIN = "";
 export const LAUNCH_LINE = "Launch very soon";
@@ -44,6 +46,10 @@ export const BASKET_SEATS = BASKET.length;
 
 export function tokenUrl(address: string): string {
   return `https://robinhoodchain.blockscout.com/token/${address}`;
+}
+
+export function addressUrl(address: string): string {
+  return `https://robinhoodchain.blockscout.com/address/${address}`;
 }
 
 export const X_URL = "https://x.com/MrStockXYZ";

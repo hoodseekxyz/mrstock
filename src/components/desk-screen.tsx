@@ -56,9 +56,9 @@ export function DeskScreen() {
             ${TICKER} launches on LetsCash, on Robinhood Chain. The tax is {TAX}% on the buy and{" "}
             {TAX}% on the sell, set once, and it cannot move. {FEE_PLATFORM}% is LetsCash.{" "}
             {FEE_DESK}% is the desk. {FEE_BASKET}% is named to a helper that buys {BASKET_SEATS}{" "}
-            stock tokens, NVDA, SPY and MU, and pushes them to holders. That helper is not deployed.
-            The three names do not get edited later. The coin does not open until the helper is the
-            fee recipient. Someone else’s all-time high is not this chart.
+            stock tokens, NVDA, SPY and MU, and pushes them to holders. The helper is on chain. The
+            coin is not, and the fee stream is not bound yet. The three names do not get edited
+            later. Someone else’s all-time high is not this chart.
           </p>
         </section>
 
@@ -136,8 +136,8 @@ export function DeskScreen() {
             <h2>What one trade owes the {TAX}%</h2>
             <p>
               Practice numbers. A round trip is {TAX * 2}% before the price moves. Your slice is
-              your share of that one basket buy, not a day, and not a payment. The helper is not
-              deployed, so nothing here has been bought.
+              your share of that one basket buy, not a day, and not a payment. The helper holds no
+              stock yet. The coin is not live.
             </p>
           </header>
           <div className="calc-grid">
@@ -200,11 +200,10 @@ export function DeskScreen() {
 
         <section className="slate pair-strip">
           <div>
-            <p className="kicker">Helper · not deployed</p>
+            <p className="kicker">Helper · on chain · not bound</p>
             <p>
-              The {FEE_BASKET}% has to land on a contract that buys NVDA, SPY and MU and cannot add a
-              fourth name. A new helper can be written later. LetsCash can hand the fee stream to
-              it. This contract cannot. No helper, no coin.
+              The {FEE_BASKET}% has to be named to this contract at launch. It buys NVDA, SPY and MU
+              and cannot add a fourth name. No coin yet, so there is nothing to claim.
             </p>
           </div>
           <div className="pair-links">

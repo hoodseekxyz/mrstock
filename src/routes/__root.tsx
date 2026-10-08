@@ -14,7 +14,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Tony Stock Pro Trader. Pick a rider. $MRSTOCK launches very soon on LetsCash. Tax 3%, once. 0.3% platform, 0.7% desk, 2% buys three stock tokens for holders. The helper is not deployed. Parody. Not a fund.",
+          "Tony Stock Pro Trader. Pick a rider. $MRSTOCK launches very soon on LetsCash. Tax 3%, once. 0.3% platform, 0.7% desk, 2% buys NVDA, SPY and MU. The helper is on chain. The coin is not. Parody. Not a fund.",
       },
       { name: "theme-color", content: "#121418" },
     ],

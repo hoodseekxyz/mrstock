@@ -28,7 +28,7 @@ Five riders. One tape.
 LetsCash. Tax 3%, once.
 0.3 platform. 0.7 desk. 2 buys three stocks.
 
-The helper is not deployed. The coin waits for it.
+The helper is on chain. The coin is not.
 
 mrstock.xyz
 $MRSTOCK
