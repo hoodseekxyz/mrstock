@@ -30,8 +30,8 @@ export function RulesScreen() {
             MrStock is a skate-shop character select in front of a LetsCash meme. The coin launches
             on {CHAIN_NAME}. Tax {TAX}%, once. {FEE_PLATFORM}% stays with LetsCash. {FEE_DESK}% is
             the desk. {FEE_BASKET}% buys NVDA, SPY and MU for holders. The helper is on chain. The
-            coin is not, so the stream is not bound. The list inside the helper cannot grow. The
-            plaque says launch very soon.
+            coin address is on the plaque. The stream is not bound until bind. The list inside the
+            helper cannot grow.
           </p>
         </section>
 
@@ -44,7 +44,7 @@ export function RulesScreen() {
             <b>${TICKER}</b>. Supply <b>{formatNum(SUPPLY)}</b>. Tax <b>{TAX}%</b>. The pool is
             priced in {QUOTE}. The only fee wallet is the helper, already on chain. It forwards
             7/27 of each claim to the desk and keeps 20/27 for NVDA, SPY and MU. Do not also list
-            the desk as a fee wallet. The coin is not launched. This site cannot sign it.
+            the desk as a fee wallet. The coin address is posted. This site cannot sign bind.
           </p>
           <p>
             <a href={FEE_URL} target="_blank" rel="noreferrer">

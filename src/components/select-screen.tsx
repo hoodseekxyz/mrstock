@@ -217,8 +217,8 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
         <p className="accept-lead">
           LetsCash. Pool is {QUOTE}. Tax {TAX}%, locked at launch. {FEE_PLATFORM}% is the platform.{" "}
           {FEE_DESK}% is the desk wallet. {FEE_BASKET}% buys NVDA, SPY and MU for holders. Those
-          three are not edited later. The helper is on chain. The coin is not. This page cannot
-          sign the launch.
+          three are not edited later. The helper is on chain. The coin address is on the plaque.
+          This page cannot sign bind.
         </p>
         <dl className="pair-block">
           <div>

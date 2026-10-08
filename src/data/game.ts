@@ -6,11 +6,9 @@ export const FEE_URL = "https://letscash.fun/about";
 export const QUOTE = "ETH";
 /** 0.7% only. Not the basket. */
 export const DESK_WALLET = "0xa18d8924482B29c16652345C38620EC83f436c07";
-/** On chain. Not bound to a coin yet. */
+/** On chain. Coin is set when bind reads the pool. */
 export const HELPER = "0x8E993d7871F5c1EBD9433e3740508EDa12BC3881";
-/** Empty on purpose until the real drop. Not a stock token. */
-export const COIN = "";
-export const LAUNCH_LINE = "Launch very soon";
+export const COIN = "0x5ada246419301dc7e49e66603bf32dbf4e3981cc";
 /** LetsCash keeps 0.3% of the trade at every rate. The rest is the launch share. */
 export const TAX = 3;
 export const FEE_PLATFORM = 0.3;

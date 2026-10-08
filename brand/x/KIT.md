@@ -28,7 +28,7 @@ Five riders. One tape.
 LetsCash. Tax 3%, once.
 0.3 platform. 0.7 desk. 2 buys three stocks.
 
-The helper is on chain. The coin is not.
+The helper is on chain. The coin address is on the plaque. Bind is still open.
 
 mrstock.xyz
 $MRSTOCK

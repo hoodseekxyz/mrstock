@@ -273,6 +273,21 @@
   line-height: 1.1;
 }
 
+.ca-addr {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  background: none;
+  border: 0;
+  color: inherit;
+  padding: 0;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+
 .basket {
   display: flex;
   flex-direction: column;

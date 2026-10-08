@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { BASKET, DESK_WALLET, HELPER, LAUNCH_LINE, QUOTE, X_HANDLE, X_URL, addressUrl, tokenUrl } from "@/data/game";
+import { BASKET, COIN, DESK_WALLET, HELPER, QUOTE, X_HANDLE, X_URL, addressUrl, tokenUrl } from "@/data/game";
 
 export function BrandMark({ compact = false }: { compact?: boolean }) {
   return (
@@ -40,10 +40,22 @@ export function ModeNav({ current }: { current: "ride" | "desk" | "rules" }) {
 }
 
 export function CaBox({ tone = "metal" }: { tone?: "metal" | "inset" }) {
+  const [copied, setCopied] = useState(false);
   return (
-    <div className={tone === "metal" ? "metal ca-box" : "ca-box inset"} aria-label="Launch status">
-      <span className="ca-label">Soon</span>
-      <p className="ca-soon">{LAUNCH_LINE}</p>
+    <div className={tone === "metal" ? "metal ca-box" : "ca-box inset"} aria-label="Coin contract">
+      <span className="ca-label">CA</span>
+      <button
+        type="button"
+        className="ca-soon ca-addr"
+        onClick={() => {
+          navigator.clipboard.writeText(COIN).then(
+            () => setCopied(true),
+            () => setCopied(false),
+          );
+        }}
+      >
+        {copied ? "Copied" : COIN}
+      </button>
       <a className="ca-x" href={X_URL} target="_blank" rel="noreferrer">
         {X_HANDLE}
       </a>

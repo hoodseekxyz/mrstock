@@ -56,9 +56,9 @@ export function DeskScreen() {
             ${TICKER} launches on LetsCash, on Robinhood Chain. The tax is {TAX}% on the buy and{" "}
             {TAX}% on the sell, set once, and it cannot move. {FEE_PLATFORM}% is LetsCash.{" "}
             {FEE_DESK}% is the desk. {FEE_BASKET}% is named to a helper that buys {BASKET_SEATS}{" "}
-            stock tokens, NVDA, SPY and MU, and pushes them to holders. The helper is on chain. The
-            coin is not, and the fee stream is not bound yet. The three names do not get edited
-            later. Someone else’s all-time high is not this chart.
+            stock tokens, NVDA, SPY and MU, and pushes them to holders. The coin is on the plaque.
+            The helper is on chain. The fee stream is not bound until bind. The three names do not
+            get edited later. Someone else’s all-time high is not this chart.
           </p>
         </section>
 
@@ -137,7 +137,7 @@ export function DeskScreen() {
             <p>
               Practice numbers. A round trip is {TAX * 2}% before the price moves. Your slice is
               your share of that one basket buy, not a day, and not a payment. The helper holds no
-              stock yet. The coin is not live.
+              stock until bind.
             </p>
           </header>
           <div className="calc-grid">
