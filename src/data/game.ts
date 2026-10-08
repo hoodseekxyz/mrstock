@@ -1,10 +1,11 @@
-export const PAIR = "0x117cc2133c37b721f49de2a7a74833232b3b4c0c";
 export const CHAIN_ID = 4663;
 export const CHAIN_NAME = "Robinhood Chain";
 export const TICKER = "MRSTOCK";
 export const SUPPLY = 1_000_000_000;
 export const FEE_URL = "https://letscash.fun/about";
-export const PAIR_URL = `https://robinhoodchain.blockscout.com/address/${PAIR}`;
+export const QUOTE = "ETH";
+/** 0.7% only. Not the basket. */
+export const DESK_WALLET = "0xa18d8924482B29c16652345C38620EC83f436c07";
 /** Empty on purpose until the real drop. Not a stock token. */
 export const COIN = "";
 export const LAUNCH_LINE = "Launch very soon";
@@ -13,7 +14,38 @@ export const TAX = 3;
 export const FEE_PLATFORM = 0.3;
 export const FEE_DESK = 0.7;
 export const FEE_BASKET = 2;
-export const BASKET_SEATS = 3;
+
+export type BasketSeat = {
+  symbol: string;
+  name: string;
+  address: string;
+};
+
+/** Frozen at deploy. A fourth name is a new helper, not an edit to this list. */
+export const BASKET: BasketSeat[] = [
+  {
+    symbol: "NVDA",
+    name: "NVIDIA",
+    address: "0xd0601CE157Db5bdC3162BbaC2a2C8aF5320D9EEC",
+  },
+  {
+    symbol: "SPY",
+    name: "S&P 500",
+    address: "0x117cc2133c37B721F49dE2A7a74833232B3B4C0C",
+  },
+  {
+    symbol: "MU",
+    name: "Micron",
+    address: "0xfF080c8ce2E5feadaCa0Da81314Ae59D232d4afD",
+  },
+];
+
+export const BASKET_SEATS = BASKET.length;
+
+export function tokenUrl(address: string): string {
+  return `https://robinhoodchain.blockscout.com/token/${address}`;
+}
+
 export const X_URL = "https://x.com/MrStockXYZ";
 export const X_HANDLE = "@MrStockXYZ";
 

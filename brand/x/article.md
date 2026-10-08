@@ -24,9 +24,9 @@ Pick one. Arrows move the floor. Rotate flips the stance. Bio is the chalkboard.
 
 $MRSTOCK is built for LetsCash, not for a stock-token pair.
 
-The tax is 3% on the buy and 3% on the sell, set once. LetsCash keeps 0.3% of the trade. 0.7% is the desk. 2% is named to a helper that buys three stock tokens and sends them to holders.
+The tax is 3% on the buy and 3% on the sell, set once. The pool is ETH. LetsCash keeps 0.3% of the trade. 0.7% is the desk wallet. 2% is named to a helper that buys NVDA, SPY and MU and sends them to holders.
 
-That helper is not deployed. The coin does not open until the helper is the fee recipient. A wallet is not good enough for the 2%. If the pot does not clear the cost of the buy, it waits. No volume, no stock.
+Those three are locked in the helper. A fourth name is not an edit. It is a new helper, and the fee stream has to be handed to it. The helper is not deployed. The coin does not open until that helper is the fee recipient.
 
 The plaque says launch very soon. The contract prints when it does.
 

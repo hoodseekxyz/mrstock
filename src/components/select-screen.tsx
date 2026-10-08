@@ -6,6 +6,7 @@ import {
   FEE_DESK,
   FEE_PLATFORM,
   FEE_URL,
+  QUOTE,
   TAX,
   TICKER,
   TRADERS,
@@ -214,9 +215,9 @@ function AcceptCard({ trader, onClose }: { trader: Trader; onClose: () => void }
         <p className="kicker">Riding with {trader.name}</p>
         <h2 id="accept-title">$MRSTOCK</h2>
         <p className="accept-lead">
-          LetsCash. Tax {TAX}%, locked at launch. {FEE_PLATFORM}% is the platform. {FEE_DESK}% is
-          the desk. {FEE_BASKET}% is named to a helper that buys {BASKET_SEATS} stock tokens for
-          holders. That helper is not deployed. The coin waits for it. This page cannot sign either.
+          LetsCash. Pool is {QUOTE}. Tax {TAX}%, locked at launch. {FEE_PLATFORM}% is the platform.{" "}
+          {FEE_DESK}% is the desk wallet. {FEE_BASKET}% buys NVDA, SPY and MU for holders. Those
+          three are not edited later. The helper is not deployed. This page cannot sign it.
         </p>
         <dl className="pair-block">
           <div>

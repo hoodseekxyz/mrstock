@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { LAUNCH_LINE, X_HANDLE, X_URL } from "@/data/game";
+import { useState } from "react";
+import { BASKET, DESK_WALLET, LAUNCH_LINE, QUOTE, X_HANDLE, X_URL, tokenUrl } from "@/data/game";
 
 export function BrandMark({ compact = false }: { compact?: boolean }) {
   return (
@@ -46,6 +47,47 @@ export function CaBox({ tone = "metal" }: { tone?: "metal" | "inset" }) {
       <a className="ca-x" href={X_URL} target="_blank" rel="noreferrer">
         {X_HANDLE}
       </a>
+    </div>
+  );
+}
+
+export function CopyLine({ label, value }: { label: string; value: string }) {
+  const [copied, setCopied] = useState(false);
+
+  return (
+    <button
+      type="button"
+      className="copy-line"
+      onClick={() => {
+        navigator.clipboard.writeText(value).then(
+          () => setCopied(true),
+          () => setCopied(false),
+        );
+      }}
+    >
+      <b>{label}</b>
+      <span className="mono">{copied ? "Copied" : value}</span>
+    </button>
+  );
+}
+
+export function BasketList() {
+  return (
+    <div className="basket">
+      {BASKET.map((seat) => (
+        <div className="basket-row" key={seat.symbol}>
+          <CopyLine label={seat.symbol} value={seat.address} />
+          <a href={tokenUrl(seat.address)} target="_blank" rel="noreferrer">
+            {seat.name}
+          </a>
+        </div>
+      ))}
+      <p className="basket-note">
+        Pool is {QUOTE}. These three are locked when the helper deploys. Nothing gets added inside
+        that contract. A fourth name is a new helper, and LetsCash can hand the fee stream to it.
+        The desk wallet takes the 0.7% only.
+      </p>
+      <CopyLine label="Desk" value={DESK_WALLET} />
     </div>
   );
 }

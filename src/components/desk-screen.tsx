@@ -14,7 +14,7 @@ import {
   formatUsd,
   practicePrice,
 } from "@/data/game";
-import { BrandMark, CaBox, ModeNav } from "@/components/chrome";
+import { BrandMark, BasketList, CaBox, ModeNav } from "@/components/chrome";
 
 const PRACTICE_NOW = Date.UTC(2026, 0, 2, 14, 30, 0);
 
@@ -56,8 +56,9 @@ export function DeskScreen() {
             ${TICKER} launches on LetsCash, on Robinhood Chain. The tax is {TAX}% on the buy and{" "}
             {TAX}% on the sell, set once, and it cannot move. {FEE_PLATFORM}% is LetsCash.{" "}
             {FEE_DESK}% is the desk. {FEE_BASKET}% is named to a helper that buys {BASKET_SEATS}{" "}
-            stock tokens and pushes them to holders. That helper is not deployed. The coin does not
-            open until it is the fee recipient. Someone else’s all-time high is not this chart.
+            stock tokens, NVDA, SPY and MU, and pushes them to holders. That helper is not deployed.
+            The three names do not get edited later. The coin does not open until the helper is the
+            fee recipient. Someone else’s all-time high is not this chart.
           </p>
         </section>
 
@@ -75,8 +76,19 @@ export function DeskScreen() {
           <article className="slate split hot">
             <strong>{FEE_BASKET.toFixed(1)}%</strong>
             <h2>{BASKET_SEATS} stocks</h2>
-            <p>The helper buys three names and sends them out. Dust waits. No volume, no buy.</p>
+            <p>The helper buys NVDA, SPY and MU and sends them out. The list does not grow.</p>
           </article>
+        </section>
+
+        <section className="slate board">
+          <header className="board-head">
+            <div>
+              <h2>The basket</h2>
+              <p>Robinhood stock tokens. Not the shares, not the ETF in a brokerage. Click a row to copy.</p>
+            </div>
+            <span className="pill">Locked three</span>
+          </header>
+          <BasketList />
         </section>
 
         <section className="slate board">
@@ -190,9 +202,9 @@ export function DeskScreen() {
           <div>
             <p className="kicker">Helper · not deployed</p>
             <p>
-              The {FEE_BASKET}% has to land on a contract that can buy three stock tokens and send
-              them out, and that cannot be repointed after the launch. A wallet is not that. No
-              helper, no coin.
+              The {FEE_BASKET}% has to land on a contract that buys NVDA, SPY and MU and cannot add a
+              fourth name. A new helper can be written later. LetsCash can hand the fee stream to
+              it. This contract cannot. No helper, no coin.
             </p>
           </div>
           <div className="pair-links">
