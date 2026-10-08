@@ -41,8 +41,10 @@ export function RulesScreen() {
           <p>
             LetsCash, one transaction, liquidity locked by them. Name <b>MrStock</b>. Ticker{" "}
             <b>${TICKER}</b>. Supply <b>{formatNum(SUPPLY)}</b>. Tax <b>{TAX}%</b>. The pool is
-            priced in {QUOTE}, and the fee is paid in ETH, never in the coin. No contract is posted
-            yet. It prints when the launch does.
+            priced in {QUOTE}. The only fee wallet is the helper. It forwards 7/27 of each claim
+            to the desk and keeps 20/27 for NVDA, SPY and MU. Do not also list the desk as a fee
+            wallet. The helper source is written. It is not on chain yet. This site cannot sign
+            the deploy.
           </p>
           <p>
             <a href={FEE_URL} target="_blank" rel="noreferrer">
